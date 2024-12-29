@@ -15,7 +15,7 @@ const App = () => {
         return <FaStar 
         key={index}
         size={40}
-        className='text-gray-400'
+        className={rating ? 'text-yellow-400' : 'text-gray-400'}
         />
       })}
       </div>
