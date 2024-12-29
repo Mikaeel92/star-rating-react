@@ -6,6 +6,18 @@ const App = () => {
   const [rating, setRating] = useState(0)
   const [hover, setHover] = useState(0)
 
+  const handleClick = (currentItem) => {
+    setRating(currentItem)
+  }
+
+  const handleMouseMove = (currentItem) => {
+    setHover(currentItem)
+  }
+
+  const handleMouseLeave = () => {
+    setHover(rating)
+  }
+
   return (
     <div className='flex flex-col items-center justify-center w-screen h-screen'>
       <div className='flex gap-2'>
@@ -15,7 +27,10 @@ const App = () => {
         return <FaStar 
         key={index}
         size={40}
-        className={rating ? 'text-yellow-400' : 'text-gray-400'}
+        className={index <= (rating || hover) ? 'text-yellow-400' : 'text-gray-400'}
+        onClick={() => handleClick(index)}
+        onMouseMove={() => handleMouseMove(index)}
+        onMouseLeave={() => handleMouseLeave()}
         />
       })}
       </div>
